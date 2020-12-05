@@ -3,6 +3,8 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
+  // const [test,useTest]=useState('default');
+  console.log('logged something');
   return (
     <View style={styles.container}>
       <Text>First time using React Native!</Text>
