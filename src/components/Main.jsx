@@ -14,10 +14,6 @@ const styles=StyleSheet.create({
     },
 });
 
-// const handleSubmit=(values)=>{
-//    console.log(values);
-// };
-
 const Main =()=>{
     return (
         <View style={styles.container}>

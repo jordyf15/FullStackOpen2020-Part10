@@ -2,8 +2,10 @@ import React from 'react';
 import {View, StyleSheet,Text,ScrollView} from 'react-native';
 import Constants from 'expo-constants';
 import theme from '../theme';
-// import AppBarTab from './AppBarTab';
+import {useQuery} from '@apollo/react-hooks';
 import {Link} from 'react-router-native';
+import {CHECK_AUTHORIZED_USER} from '../graphql/queries';
+import SignOut from './Signout';
 
 
 const styles=StyleSheet.create({
@@ -23,12 +25,18 @@ const styles=StyleSheet.create({
 });
 
 const AppBar=()=>{
+    const {data}=useQuery(CHECK_AUTHORIZED_USER);
+    if(!data){
+        return null;
+    }
     return <View style={styles.container}>
         <ScrollView horizontal style={styles.scrollViewStyle}>
             <Link to='/'><Text style={styles.tabStyle}>Repository</Text></Link>
-            {/* <Link to='/' component={AppBarTab} tabLabel='Repository'/> */}
-            <Link to='/signin'><Text style={styles.tabStyle}>Sign In</Text></Link>
-            {/* <Link to='/signin' component={AppBarTab} tabLabel='Sign In'/> */}
+
+            {data.authorizedUser===null
+            ?<Link to='/signin'><Text style={styles.tabStyle}>Sign In</Text></Link>
+            :<SignOut/>}
+
         </ScrollView>
     </View>;
 };
