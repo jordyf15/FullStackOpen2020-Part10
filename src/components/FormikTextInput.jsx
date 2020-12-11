@@ -8,12 +8,18 @@ import NativeText from './Text';
 
 const styles= StyleSheet.create({
     errorText:{
-        marginRight:'50%',
-        color: theme.colors.errorColor
+        // marginRight:0,
+        color: theme.colors.errorColor,
+        textAlign:'left',
+        width: '100%',
+        maxWidth: '100%',
+        marginLeft: '10%',
+        marginVertical: -20
+        
     },
     inputBox:{
         width: '90%',
-        height: '20%',
+        height: 40,
         borderRadius: 10,
         borderStyle:'solid',
         borderWidth: 1,

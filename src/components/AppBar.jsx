@@ -21,7 +21,6 @@ const styles=StyleSheet.create({
         color: theme.colors.tabLabel,
         marginHorizontal: 20
     },
-
 });
 
 const AppBar=()=>{
@@ -34,9 +33,21 @@ const AppBar=()=>{
             <Link to='/'><Text style={styles.tabStyle}>Repository</Text></Link>
 
             {data.authorizedUser===null
+            ?null
+            :<Link to='/reviewform'><Text style={styles.tabStyle}>Create a Review</Text></Link>}
+
+            {data.authorizedUser===null
+            ?null
+            :<Link to='/userreview'><Text style={styles.tabStyle}>My Reviews</Text></Link>}
+
+            {data.authorizedUser===null
             ?<Link to='/signin'><Text style={styles.tabStyle}>Sign In</Text></Link>
             :<SignOut/>}
 
+            {data.authorizedUser===null
+            ?<Link to='/signup'><Text style={styles.tabStyle}>Sign Up</Text></Link>
+            :null}
+            <View style={{paddingRight: 25}}></View>
         </ScrollView>
     </View>;
 };
